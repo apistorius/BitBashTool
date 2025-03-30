@@ -1,0 +1,51 @@
+
+
+
+
+#main
+{
+
+}
+
+
+#bit-array
+{
+    display: flex;
+    flex-direction: row;
+}
+
+#input-value
+{
+    position: relative;
+    margin: 32px 192px;
+}
+
+
+.bit
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 256px;
+    width: 64px;
+
+    margin: 2px;
+
+    background-color: lightsalmon;
+}
+
+
+.bit-value-display
+{
+    position: relative;
+
+    height: 64px;
+    width: 64px;
+
+    text-align: center;
+    vertical-align: middle;
+    line-height: 64px;
+
+    background-color: cadetblue;
+}
