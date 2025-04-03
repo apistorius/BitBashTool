@@ -72,26 +72,33 @@ function getBitExponentDisplayDiv(bitExponent)
 // TODO change to innerHtml command instead
 function createBitDiv(exponent)
 {
-    // create bit div
-    let uiBlankBit = document.createElement("div");
-    uiBlankBit.className = "bit";
-    uiBlankBit.id = "bit-" + String(exponent);
-    uiBitArray.appendChild(uiBlankBit);
+    let stringHtml = '<div class="bit" id=bit-'+String(exponent)+'>' + 
+        '<div class="bit-value-display" id="bit-'+String(exponent)+'-exp-display">'+String(exponent)+'</div>' +
+        '<div class="bit-value-display" id="bit-'+String(exponent)+'-value-display"> 0 </div>' +
+    '</div>';
+    return stringHtml;
 
-    // create bit exp-disp div
-    let uiExpDisplay = document.createElement("div");
-    uiExpDisplay.className = "bit-value-display";
-    uiExpDisplay.id = "bit-" + String(exponent) + "-exp-display";
-    uiExpDisplay.innerText = String(exponent);
-    uiBlankBit.appendChild(uiExpDisplay);
+    // // create bit div
+    // let uiBlankBit = document.createElement("div");
+    // uiBlankBit.className = "bit";
+    // uiBlankBit.id = "bit-" + String(exponent);
+    // uiBitArray.appendChild(uiBlankBit);
 
-    // create bit value-disp div
-    let uiValueDisplay = document.createElement("div");
-    uiValueDisplay.className = "bit-value-display";
-    uiValueDisplay.id = "bit-" + String(exponent) + "-value-display";
-    uiBlankBit.appendChild(uiValueDisplay);
+    // // create bit exp-disp div
+    // let uiExpDisplay = document.createElement("div");
+    // uiExpDisplay.className = "bit-value-display";
+    // uiExpDisplay.id = "bit-" + String(exponent) + "-exp-display";
+    // uiExpDisplay.innerText = String(exponent);
+    // uiBlankBit.appendChild(uiExpDisplay);
 
-    return uiBlankBit;
+    // // create bit value-disp div
+    // let uiValueDisplay = document.createElement("div");
+    // uiValueDisplay.className = "bit-value-display";
+    // uiValueDisplay.id = "bit-" + String(exponent) + "-value-display";
+    // uiBlankBit.appendChild(uiValueDisplay);
+
+    // return uiBlankBit;
+    
 }
 
 
@@ -101,7 +108,8 @@ class Bit
     {
         this.value = initialValue;
         this.exponent = exponent;
-        this.ui = createBitDiv(exponent);
+        // this.ui = createBitDiv(exponent);
+        uiBitArray.innerHTML += createBitDiv(exponent);
     }
 
     setValue(value)
@@ -141,9 +149,16 @@ class BitBash
         uiBitArray.innerHTML = "";
     }
 
+    setNBits(nBits)
+    {
+        this.nBits = nBits;
+        this.setValue(this.value)
+    }
+
     // value setter function
     setValue(value)
     {
+        this.value = value;
         let binArray = pruneOrPadArray(intToBitArray(value), this.nBits)
         this.clearBits();
         binArray.forEach((element, index) => {
@@ -167,7 +182,6 @@ bitBash.setValue(65);
 
 document.getElementById("input-value").addEventListener("change", (e) => {
     bitBash.setValue( Number(e.target.value) );
-    console.log("HELLO");
 });
 
 console.log("DONE");
