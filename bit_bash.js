@@ -115,10 +115,8 @@ class BitBash
         this.nBits = bits;
         this.bits = [];
         this.value = 0;
-
-        // this.updateUi();
-
     }
+
 
     clearBits()
     {
@@ -126,11 +124,13 @@ class BitBash
         uiBitArray.innerHTML = "";
     }
 
+
     setNBits(nBits)
     {
         this.nBits = nBits;
         this.setValue(this.value)
     }
+
 
     // value setter function
     setValue(value)
@@ -143,6 +143,34 @@ class BitBash
         });
         this.updateUi();
     }
+
+
+    groupBytes()
+    {
+        let nibbleSize = 4;
+        let byteSize = 8;
+
+        let nibbleGroup = 0;
+        let byteGroup = 0;
+        
+        for (let i = 0; i < this.bits.length; ++i)
+        {
+            if (i % nibbleSize == 0)
+            {
+                nibbleGroup++;
+            }
+            if (i % byteSize == 0)
+            {
+                byteGroup++;
+            }
+        }
+
+    }
+
+
+
+
+
 
     // updates ui for all bits
     updateUi()
