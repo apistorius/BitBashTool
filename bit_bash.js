@@ -77,28 +77,6 @@ function createBitDiv(exponent)
         '<div class="bit-value-display" id="bit-'+String(exponent)+'-value-display"> 0 </div>' +
     '</div>';
     return stringHtml;
-
-    // // create bit div
-    // let uiBlankBit = document.createElement("div");
-    // uiBlankBit.className = "bit";
-    // uiBlankBit.id = "bit-" + String(exponent);
-    // uiBitArray.appendChild(uiBlankBit);
-
-    // // create bit exp-disp div
-    // let uiExpDisplay = document.createElement("div");
-    // uiExpDisplay.className = "bit-value-display";
-    // uiExpDisplay.id = "bit-" + String(exponent) + "-exp-display";
-    // uiExpDisplay.innerText = String(exponent);
-    // uiBlankBit.appendChild(uiExpDisplay);
-
-    // // create bit value-disp div
-    // let uiValueDisplay = document.createElement("div");
-    // uiValueDisplay.className = "bit-value-display";
-    // uiValueDisplay.id = "bit-" + String(exponent) + "-value-display";
-    // uiBlankBit.appendChild(uiValueDisplay);
-
-    // return uiBlankBit;
-    
 }
 
 
@@ -108,7 +86,6 @@ class Bit
     {
         this.value = initialValue;
         this.exponent = exponent;
-        // this.ui = createBitDiv(exponent);
         uiBitArray.innerHTML += createBitDiv(exponent);
     }
 
@@ -183,5 +160,10 @@ bitBash.setValue(65);
 document.getElementById("input-value").addEventListener("change", (e) => {
     bitBash.setValue( Number(e.target.value) );
 });
+
+document.getElementById("input-nBits").addEventListener("change", (e) => {
+    bitBash.setNBits( Number(e.target.value) );
+});
+
 
 console.log("DONE");
